@@ -7,7 +7,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
+
+RUN node -v && npm -v && ls -la && npm run build
+
 
 # Étape 2 : Image finale distroless
 FROM gcr.io/distroless/nodejs20-debian12:nonroot
